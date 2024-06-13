@@ -22,7 +22,7 @@ const saveTextFromWebsite = ($, element, article) => {
 export const summarize = async (req, res) => {
   let article = [];
 
-  //get sended URL via form on frontend
+  //get sended URL via form on frontend and get the article data
   const getArticleData = async () => {
     try {
       const url = req.body.url;
@@ -73,6 +73,7 @@ export const summarize = async (req, res) => {
           message: "Could not get a summary from the LLM",
         });
       }
+
       res.status(200).json({ success: true, message: result });
     } catch (err) {
       res.status(400).json({
