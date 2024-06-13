@@ -24,3 +24,14 @@ The user can change various parameters:
  - number of sentences - length of the summary.
 
 Those parameters user can find and set in the /src/config/parametersLLM.config.js
+
+---
+
+### What was usedd for this project?
+
+ - Server is made using Node.js and Express.js,
+ - To recive data from given URL I used axios,
+ - For scraping data from given website I used Cheerio,
+ - LMM API - Groq and OpenAI,
+ - To safely strore API KEYS I used dotenv,
+ - To make requests from localhost I used cores.
