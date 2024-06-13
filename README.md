@@ -8,9 +8,9 @@ The API will return the summarized article or an error message if something went
 
 ### Examople of use
 
-![image](https://github.com/krzysiekk9/summarize/assets/107801980/8864dce5-19d4-4a50-b5a4-e1ea139be6d8)
+![image](https://github.com/krzysiekk9/summarize/assets/107801980/e29054d8-3de2-418e-a366-56cb180df77a)
 
-The article from example: [Article](https://www.teachermagazine.com/sea_en/articles/effective-use-of-virtual-reality-to-improve-student-outcomes-in-science)
+The article from example: [Article](https://www.onet.pl/informacje/onettrojmiasto/szesc-miesiecy-rzadu-donalda-tuska-to-wczesniej-czy-pozniej-bedzie-im-wychodzilo/w8236wr,79cfc278)
 
 ---
 
