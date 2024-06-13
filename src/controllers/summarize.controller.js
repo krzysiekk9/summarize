@@ -22,7 +22,7 @@ const saveTextFromWebsite = ($, element, article) => {
 export const summarize = async (req, res) => {
   let article = [];
 
-  //get sended URL via form on frontend and get the article data
+  //get sended URL via form on frontend
   const getArticleData = async () => {
     try {
       const url = req.body.url;
@@ -33,9 +33,9 @@ export const summarize = async (req, res) => {
       //check if selected page has desired classes for article
       //if yes - length is >= 0
       //if not - lenght is === 0
-      if ($("article").length) {
+      if ($(".article-body").length) {
         //for each element execute function
-        $("article").each((i, element) => {
+        $(".article-body").each((i, element) => {
           saveTextFromWebsite($, element, article);
         });
         //if there is no article tag then get elements from body
@@ -45,6 +45,8 @@ export const summarize = async (req, res) => {
           saveTextFromWebsite($, element, article);
         });
       }
+
+      return article; //return article to pass it to the LLM
     } catch (err) {
       res.status(400).json({
         success: false,
@@ -52,7 +54,8 @@ export const summarize = async (req, res) => {
       });
     }
   };
-  getArticleData();
+
+  article = await getArticleData();
 
   //filter out empty elements
   const cleanedArticle = article.filter((element) => element !== "");
@@ -67,13 +70,15 @@ export const summarize = async (req, res) => {
       if (LLM === "OPEN_AI") {
         result = await openAISummarize(cleanedArticle);
       }
+      //if response is empty return error
       if (result === "") {
-        res.status(400).json({
-          success: false,
-          message: "Could not get a summary from the LLM",
-        });
+        throw new Error("Could not get a summary from the LLM");
       }
-
+      // If LLM, despite the request not to add anything other than a summary
+      //adds something at the beginning - it will be removed
+      if (result.startsWith("Here")) {
+        result = result.split("\n").pop(); //returnig last element after splitting
+      }
       res.status(200).json({ success: true, message: result });
     } catch (err) {
       res.status(400).json({
