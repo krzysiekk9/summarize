@@ -27,7 +27,7 @@ Those parameters user can find and set in the /src/config/parametersLLM.config.j
 
 ---
 
-### What was usedd for this project?
+### What was used for this project?
 
  - Server is made using Node.js and Express.js,
  - To recive data from given URL I used axios,
