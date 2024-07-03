@@ -6,7 +6,7 @@ The API will return the summarized article or an error message if something went
 
 ---
 
-### Examople of use
+### Example of use
 
 ![image](https://github.com/krzysiekk9/summarize/assets/107801980/e29054d8-3de2-418e-a366-56cb180df77a)
 
